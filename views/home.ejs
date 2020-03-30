@@ -15,13 +15,13 @@
 
             <div class="description">
                 <h3>DESCRIPTION</h3>
-                <textarea type=text placeholder="What do you need to do?"></textarea>
+                <textarea type=text placeholder="What do you need to do?" name="description" required></textarea>
             </div>
 
             <div class="description-2">
                 <div class="category">
                     <h3>CATEGORY</h3>
-                    <select name="select">
+                    <select name="category">
                         <option selected disabled>Select a Category</option>
                         <option value="Personal">Personal</option>
                         <option value="Work">Work</option>
@@ -32,7 +32,7 @@
 
                 <div class="due-date">
                     <h3>DUE DATE</h3>
-                    <input type=date placeholder="dd/mm/yyyy" class="date">
+                    <input type=date placeholder="dd/mm/yyyy" class="date" name="date">
                 </div>
 
             </div>
@@ -55,34 +55,29 @@
         <!-- Another form which provides check-list of items for deleting them from database -->
 
         <form id="check-list" action="/delete-task" method="POST">
-            
-            <div class="tasks">
-                <div class="name-date">
-                    <input type="checkbox" id="test1" name="checks"/>
-                    <label for="test1"></label>
-                    <h2>Annual Report Card</h2>
-                    <h4 class="date-icon">
-                        <i class="far fa-calendar-alt"></i>&ensp;APR 1,2000
-                    </h4>
-                </div>
-                <div class="category-task">
-                    <span>WORK</span>
-                </div>
-            </div>
 
+            <% for(let i=0;i<tasks.length;i++){ %>
             <div class="tasks">
                 <div class="name-date">
-                    <input type="checkbox" id="test2" name="checks1"/>
-                    <label for="test2"></label>
-                    <h2>Annual Report Card</h2>
+                    <input type="checkbox" id="<%= tasks[i].id %>"  name="<%= tasks[i].id %>"/>
+                    <label for="<%= tasks[i].id %>"></label>
+                    <h2> <%= tasks[i].description %></h2>
                     <h4 class="date-icon">
-                        <i class="far fa-calendar-alt"></i>&ensp;APR 1,2000
+                        <i class="far fa-calendar-alt"></i>
+                        <% if(tasks[i].deadline!=undefined){ %>
+                            <%= tasks[i].deadline.toDateString() %>
+                        <% }else{ %>
+                            No deadline
+                        <% } %>
                     </h4>
                 </div>
-                <div class="category-task" id="personal">
-                    <span>PERSONAL</span>
+                <% if(tasks[i].category!=undefined){ %>
+                <div class="category-task" id="<%= tasks[i].category.toLowerCase() %>">
+                    <span><%=tasks[i].category %></span>
                 </div>
+                <% } %>
             </div>
+            <% } %>
             
         </form>
     </div>

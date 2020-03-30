@@ -1,3 +1,4 @@
+/* ----------------------General html and body tags------------------ */
 html,body{
     background-color: grey;
     display:flex;
@@ -13,6 +14,8 @@ html,body{
     background-size: cover;
     margin-bottom:50px;
 }
+
+/* ----------------------------Creating task list form styling------------------------ */
 
 form{
     margin-bottom:50px;
@@ -133,14 +136,16 @@ button h3{
     box-shadow: 0px 0px 4px 3px black;
 }
 
+.add-button:hover,.delete-button:hover{
+    box-shadow: none;
+}
+
+/* --------------------The task list form styling---------------------------- */
+
 .delete-button{
     background-color:red;
     border:none;
     box-shadow: 0px 0px 4px 3px red;
-}
-
-.add-button:hover,.delete-button:hover{
-    box-shadow: none;
 }
 
 .tasks{
@@ -203,6 +208,8 @@ button h3{
     background-color: darkcyan;
     padding:8px;
 }
+
+/* ------------------Styling the checkbox and ticks----------------------- */
 
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {

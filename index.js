@@ -14,9 +14,51 @@ app.use(express.urlencoded());
 app.use(express.static('assets'));
 
 
-// Getting default page
+// Getting default home page
 app.get('/',function(req,res){
-    return res.render('home');
+
+    // Find the tasks from the database
+    Tasks.find({},function(err,tasks){
+        if(err){
+            console.log('Error in fetching results from db');
+            return;
+        }
+        return res.render('home',{
+            tasks:tasks
+        });
+    });
+});
+
+//Add task
+app.post('/create-task',function(req,res){
+    // console.log(req.body);
+    Tasks.create({
+        description:req.body.description,
+        category:req.body.category,
+        deadline:req.body.date
+    },function(err,newTask){
+        if(err){
+            console.log('Error in creating Task!',err);
+            return;
+        }
+        // console.log('******',newTask.category);
+        return res.redirect('back');
+    });
+});
+
+// Delete task
+app.post('/delete-task',function(req,res){
+    // console.log(req.body);
+    Object.keys(req.body).forEach((key)=>{
+        Tasks.findByIdAndDelete(key,function(err){
+            if(err){
+                console.log("No such task found!!!");
+                return;
+            }
+            return res.redirect('back');
+        });
+    });
+    return res.redirect('back');
 });
 
 app.listen(port,function(err){
