@@ -8,10 +8,9 @@ html,body{
 }
 
 .Todo-card{
-    width:50%;
-    background-image: url('../Images/background.jpg');
-    background-repeat: none;
-    background-size: cover;
+    background: url('../Images/background.jpg') no-repeat fixed;
+    width:50%; 
+    background-size:cover;
     margin-bottom:50px;
 }
 

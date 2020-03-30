@@ -48,16 +48,15 @@ app.post('/create-task',function(req,res){
 
 // Delete task
 app.post('/delete-task',function(req,res){
-    // console.log(req.body);
-    Object.keys(req.body).forEach((key)=>{
-        Tasks.findByIdAndDelete(key,function(err){
+    let key=Object.keys(req.body);
+    for(let i=0;i<key.length;i++){
+        Tasks.findByIdAndDelete(key[i],function(err){
             if(err){
                 console.log("No such task found!!!");
                 return;
             }
-            return res.redirect('back');
         });
-    });
+    }
     return res.redirect('back');
 });
 
