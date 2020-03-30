@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <script src="https://kit.fontawesome.com/55bb4c0c63.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!---------------- Heading of the app -------------->
+    <div class="Todo-card">
+        <h1 class="heading"><i class="fas fa-tasks"></i>&ensp;TODO App</h1>
+
+
+        <!-- Form for creating a new task in the database -->
+        <form action="/create-task" method="POST">
+
+            <div class="description">
+                <h3>DESCRIPTION</h3>
+                <textarea type=text placeholder="What do you need to do?"></textarea>
+            </div>
+
+            <div class="description-2">
+                <div class="category">
+                    <h3>CATEGORY</h3>
+                    <select name="select">
+                        <option selected disabled>Select a Category</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="College">College</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="due-date">
+                    <h3>DUE DATE</h3>
+                    <input type=date placeholder="dd/mm/yyyy" class="date">
+                </div>
+
+            </div>
+
+            <!-- Add task and delete task buttons -->
+            <div class="buttons">
+
+                <button type="submit" class="add-button">
+                    <h3><i class="fas fa-plus"></i>&ensp;ADD TASK</h3>
+                </button>
+
+                <button type="submit" form="check-list" class="delete-button">
+                    <h3> <i class="far fa-trash-alt"></i>&ensp;DELETE TASKS</h3>
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- Another form which provides check-list of items for deleting them from database -->
+
+        <form id="check-list" action="/delete-task" method="POST">
+            
+            <div class="tasks">
+                <div class="name-date">
+                    <input type="checkbox" id="test1" name="checks"/>
+                    <label for="test1"></label>
+                    <h2>Annual Report Card</h2>
+                    <h4 class="date-icon">
+                        <i class="far fa-calendar-alt"></i>&ensp;APR 1,2000
+                    </h4>
+                </div>
+                <div class="category-task">
+                    <span>WORK</span>
+                </div>
+            </div>
+
+            <div class="tasks">
+                <div class="name-date">
+                    <input type="checkbox" id="test2" name="checks1"/>
+                    <label for="test2"></label>
+                    <h2>Annual Report Card</h2>
+                    <h4 class="date-icon">
+                        <i class="far fa-calendar-alt"></i>&ensp;APR 1,2000
+                    </h4>
+                </div>
+                <div class="category-task" id="personal">
+                    <span>PERSONAL</span>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+
+    </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/home.js"></script>
+</body>
+</html>
